@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:28:04 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/01 13:14:42 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:13:38 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_stack	*fill_stack(int argc, char **argv)
 	i = 2;
 	while (i < argc)
 	{
+		if (argv[i] == NULL || argv[i][0] == '\0')
+			return (NULL);
 		temp->next = stacknew(ft_atoi(argv[i]));
 		if (!temp->next)
 			return (NULL);
@@ -51,10 +53,8 @@ void	swap_a(t_stack *stack)
 	if (!stack || !stack->next)
 		return ;
 	tmp = stack->value;
-	stack->next = stack->next->value;
-	// work in progress
-	
-		
+	stack->value = stack->next->value;
+	stack->next->value = tmp;
 }
 
 int main(int argc, char **argv)
@@ -66,6 +66,12 @@ int main(int argc, char **argv)
 		return (0);
 	b = NULL;
 	a = fill_stack(argc, argv);
+	if (!a)
+	{
+		write(2, "Error\n", 7);
+		return (0);
+	}
+	swap_a(a);
 	while (a != NULL)
 	{
 		printf("%d\n", a->value);

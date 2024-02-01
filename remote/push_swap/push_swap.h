@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:29:45 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/01 13:14:53 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:12:15 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ checklist:
 	Errors include for example: some arguments aren’t integers, some arguments are
 	bigger than an integer and/or there are duplicates."
 
-	- error check for an empty string ("") as an argument
+	- error check for an empty string ("") as an argument - done (I think)
+	- error check for duplicates (strcmp to check for duplicates?)
 	- error check for max and min ints (also over/under max/min)
 
 project plan:
