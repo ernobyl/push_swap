@@ -12,6 +12,27 @@
 
 #include "push_swap.h"
 
+int	check_valid_args(int argc, char **argv)
+{
+	int	i;
+	int	k;
+
+	i = 1;
+	while (i < argc)
+	{
+		k = i + 1;
+		while (argv[k])
+		{
+			if (ft_strcmp(argv[i], argv[k]) == 0)
+				return (-1);
+			k++;
+		}
+		if (argv[i] == NULL || argv[i][0] == '\0')
+			return (-1);
+		i++;
+	}
+	return (0);
+}
 t_stack	*stacknew(int value)
 {
 	t_stack	*new;
@@ -35,8 +56,6 @@ t_stack	*fill_stack(int argc, char **argv)
 	i = 2;
 	while (i < argc)
 	{
-		if (argv[i] == NULL || argv[i][0] == '\0')
-			return (NULL);
 		temp->next = stacknew(ft_atoi(argv[i]));
 		if (!temp->next)
 			return (NULL);
@@ -64,13 +83,13 @@ int main(int argc, char **argv)
 	
 	if (argc < 2)
 		return (0);
-	b = NULL;
-	a = fill_stack(argc, argv);
-	if (!a)
+	if (check_valid_args(argc, argv) == -1)
 	{
 		write(2, "Error\n", 7);
 		return (0);
 	}
+	b = NULL;
+	a = fill_stack(argc, argv);
 	swap_a(a);
 	while (a != NULL)
 	{

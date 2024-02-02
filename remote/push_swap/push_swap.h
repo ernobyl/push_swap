@@ -34,7 +34,7 @@ checklist:
 	bigger than an integer and/or there are duplicates."
 
 	- error check for an empty string ("") as an argument - done (I think)
-	- error check for duplicates (strcmp to check for duplicates?)
+	- error check for duplicates (strcmp to check for duplicates?) - done (I think)
 	- error check for max and min ints (also over/under max/min)
 
 project plan:
