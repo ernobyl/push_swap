@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:28:04 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/01 16:13:38 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:33:19 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,6 @@ t_stack	*fill_stack(int argc, char **argv)
 	return (stack);
 }
 
-void	swap_a(t_stack *stack)
-{
-	int	tmp;
-	
-	if (!stack || !stack->next)
-		return ;
-	tmp = stack->value;
-	stack->value = stack->next->value;
-	stack->next->value = tmp;
-}
-
 int main(int argc, char **argv)
 {
 	t_stack *a;
@@ -85,16 +74,30 @@ int main(int argc, char **argv)
 		return (0);
 	if (check_valid_args(argc, argv) == -1)
 	{
-		write(2, "Error\n", 7);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	b = NULL;
 	a = fill_stack(argc, argv);
-	swap_a(a);
+	// testing stuff from this point onwards
+	swap(a);
+	push(&a, &b);
+	push(&a, &b);
+	push(&a, &b);
+	rotate(&a);
+	reverse_rotate(&b);
+	printf("Stack A:\n");
 	while (a != NULL)
 	{
 		printf("%d\n", a->value);
 		a = a->next;
 	}
+	printf("Stack B:\n");
+	while (b != NULL)
+	{
+		printf("%d\n", b->value);
+		b = b->next;
+	}
+	// testing ends here
 	return (0);
 }

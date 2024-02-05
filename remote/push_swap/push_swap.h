@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:29:45 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/01 16:12:15 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:37:19 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+void	swap(t_stack *stack);
+void	push(t_stack **from, t_stack **to);
+void	rotate(t_stack **stack);
+void	reverse_rotate(t_stack **stack);
 
 #endif
 
@@ -35,7 +39,8 @@ checklist:
 
 	- error check for an empty string ("") as an argument - done (I think)
 	- error check for duplicates (strcmp to check for duplicates?) - done (I think)
-	- error check for max and min ints (also over/under max/min)
+	- error check for max and min ints, maybe modify ft_atoi (also over/under max/min)
+	- check if the arguments are a single string "1 2 3" (ft_split)
 
 project plan:
 	- create the stacks

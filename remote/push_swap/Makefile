@@ -3,6 +3,9 @@ CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -Llibft -lft
 
 SRCS = push_swap.c \
+		swap.c \
+		push.c \
+		rotate.c \
 
 NAME = push_swap
 
