@@ -12,27 +12,90 @@
 
 #include "push_swap.h"
 
-int	check_valid_args(int argc, char **argv)
+int	count_args(char *argv)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (argv[i])
+	{
+		if (argv[i] == ' ' && argv[i + 1] != '\0')
+			i++;
+		if (argv[i] && argv[i - 1] == ' ' && argv[i] != ' ')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int	isdigit_or_sign(int c)
+{
+	if ((c >= 48 && c <= 57) || c == 43 || c == 45)
+		return (1);
+	else
+		return (0);
+}
+
+int	check_valid_args(int argpos, int argc, char **argv)
 {
 	int	i;
 	int	k;
+	int	n;
 
-	i = 1;
+	i = argpos;
 	while (i < argc)
 	{
-		k = i + 1;
-		while (argv[k])
+		if ((argpos == 1 && argc > 2) || (argpos == 0 && argc > 0))
 		{
-			if (ft_strcmp(argv[i], argv[k]) == 0)
+			k = i + 1;
+			while (argv[k])
+			{
+				if (ft_strcmp(argv[i], argv[k]) == 0)
+					return (-1);
+				k++;
+			}
+		}
+		n = 0;
+		while (argv[i][n])
+		{
+			if (!isdigit_or_sign(argv[i][n]))
 				return (-1);
-			k++;
+			n++;
 		}
 		if (argv[i] == NULL || argv[i][0] == '\0')
+			return (-1);
+		if (ft_atol(argv[i]) < -2147483648 || ft_atol(argv[i]) > 2147483647)
 			return (-1);
 		i++;
 	}
 	return (0);
 }
+
+int	error_message(void)
+{
+	write(2, "Error\n", 6);
+	return (0);
+}
+
+char	**args_single_string(char **argv)
+{
+	char	**split_result;
+	int		argc;
+
+	argc = count_args(argv[1]);
+	if (argc == 0)
+		return (NULL);
+	split_result = ft_split(argv[1], ' ');
+	if (check_valid_args(0, argc, split_result) == -1)
+	{
+		ft_free(split_result);
+		return (NULL);
+	}
+	return (split_result);
+}
+
 t_stack	*stacknew(int value)
 {
 	t_stack	*new;
@@ -51,12 +114,32 @@ t_stack	*fill_stack(int argc, char **argv)
 	t_stack	*temp;
 	int		i;
 
-	stack = stacknew(ft_atoi(argv[1]));
+	stack = stacknew(ft_atol(argv[1]));
 	temp = stack;
 	i = 2;
 	while (i < argc)
 	{
-		temp->next = stacknew(ft_atoi(argv[i]));
+		temp->next = stacknew(ft_atol(argv[i]));
+		if (!temp->next)
+			return (NULL);
+		temp = temp->next;
+		i++;
+	}
+	return (stack);
+}
+
+t_stack	*fill_stack_single(int count, char **split_args)
+{
+	t_stack	*stack;
+	t_stack	*temp;
+	int		i;
+
+	stack = stacknew(ft_atol(split_args[0]));
+	temp = stack;
+	i = 1;
+	while (i < count)
+	{
+		temp->next = stacknew(ft_atol(split_args[i]));
 		if (!temp->next)
 			return (NULL);
 		temp = temp->next;
@@ -69,18 +152,27 @@ int main(int argc, char **argv)
 {
 	t_stack *a;
 	t_stack	*b;
+	char	**split_result;
 	
 	if (argc < 2)
 		return (0);
-	if (check_valid_args(argc, argv) == -1)
+	if (argc == 2)
 	{
-		write(2, "Error\n", 6);
-		return (0);
+		split_result = args_single_string(argv);
+		if (!split_result)
+			return (error_message());
+		a = fill_stack_single(count_args(argv[1]) + 1, split_result);
+		ft_free(split_result);
+	}
+	else
+	{
+		if (check_valid_args(1, argc, argv) == -1)
+			return (error_message());
+		a = fill_stack(argc, argv);
 	}
 	b = NULL;
-	a = fill_stack(argc, argv);
 	// testing stuff from this point onwards
-	swap(a);
+	// swap(a);
 	push(&a, &b);
 	push(&a, &b);
 	push(&a, &b);
