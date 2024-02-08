@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:29:45 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/05 16:57:29 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:11:28 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	reverse_rotate(t_stack **stack);
 #endif
 
 /*
-pelkällä ykkösellä antaa tällä hetkellä errorin
 checklist:
 	"In case of error, display "Error" followed by a ’\n’ on the standard error.
 	Errors include for example: some arguments aren’t integers, some arguments are

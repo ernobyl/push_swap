@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-void	*ft_free(char **tofree)
+void	ft_free(char **tofree)
 {
 	int	i;
 

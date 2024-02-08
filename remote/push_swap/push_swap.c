@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:28:04 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/05 15:33:19 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:08:31 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int	count_args(char *argv)
 	count = 0;
 	while (argv[i])
 	{
-		if (argv[i] == ' ' && argv[i + 1] != '\0')
+		while (argv[i] && argv[i] == ' ')
 			i++;
-		if (argv[i] && argv[i - 1] == ' ' && argv[i] != ' ')
+		if (argv[i])
 			count++;
-		i++;
+		while (argv[i] && argv[i] != ' ')
+			i++;
 	}
 	return (count);
 }
@@ -84,6 +85,8 @@ char	**args_single_string(char **argv)
 	char	**split_result;
 	int		argc;
 
+	if (!argv[1])
+		return (NULL);
 	argc = count_args(argv[1]);
 	if (argc == 0)
 		return (NULL);
@@ -161,7 +164,7 @@ int main(int argc, char **argv)
 		split_result = args_single_string(argv);
 		if (!split_result)
 			return (error_message());
-		a = fill_stack_single(count_args(argv[1]) + 1, split_result);
+		a = fill_stack_single(count_args(argv[1]), split_result);
 		ft_free(split_result);
 	}
 	else
