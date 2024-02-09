@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:29:45 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/09 11:25:46 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:24:36 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int	isdigit_or_sign(int c);
 int	check_valid_args(int argpos, int argc, char **argv);
 int	error_message(void);
 
-/* populating stacks */
+/* stack handling */
 t_stack	*stacknew(int value);
 t_stack	*fill_stack(int argc, char **argv);
 t_stack	*fill_stack_single(int count, char **split_args);
+void	clear_stack(t_stack **stack); // <-- probably doesn't work, check later
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:16:41 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/09 11:17:59 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/09 12:21:21 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,14 @@ t_stack	*fill_stack_single(int count, char **split_args)
 		i++;
 	}
 	return (stack);
+}
+
+void	clear_stack(t_stack **stack)
+{
+	if (stack && *stack)
+	{
+		clear_stack(&(*stack)->next);
+		free(*stack);
+		*stack = NULL;
+	}
 }
