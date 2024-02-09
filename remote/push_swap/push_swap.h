@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:29:45 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/08 14:11:28 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:25:46 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,21 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+/* operations */
 void	swap(t_stack *stack);
 void	push(t_stack **from, t_stack **to);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
+
+/* error handling */
+int	isdigit_or_sign(int c);
+int	check_valid_args(int argpos, int argc, char **argv);
+int	error_message(void);
+
+/* populating stacks */
+t_stack	*stacknew(int value);
+t_stack	*fill_stack(int argc, char **argv);
+t_stack	*fill_stack_single(int count, char **split_args);
 
 #endif
 
