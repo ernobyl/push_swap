@@ -8,6 +8,7 @@ SRCS = push_swap.c \
 		rotate.c \
 		error_handling.c \
 		populating_stacks.c \
+		sorting.c \
 
 NAME = push_swap
 

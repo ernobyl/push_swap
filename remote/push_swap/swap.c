@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack)
+void	swap(t_stack **stack)
 {
 	int	tmp;
 	
-	if (!stack || !stack->next)
+	if (!stack || !(*stack) || !(*stack)->next)
 		return ; 
-	tmp = stack->value;
-	stack->value = stack->next->value;
-	stack->next->value = tmp;
+	tmp = (*stack)->value;
+	(*stack)->value = (*stack)->next->value;
+	(*stack)->next->value = tmp;
 }

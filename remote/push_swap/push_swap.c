@@ -50,26 +50,6 @@ char	**args_single_string(char **argv)
 	return (split_result);
 }
 
-void	sort_two_three(int argc, t_stack **stack, char **argv)
-{
-	if (count_args(argv[1]) == 2 || argc == 3)
-		if ((*stack)->value > (*stack)->next->value)
-			swap(stack);
-	if (count_args(argv[1]) == 3 || argc == 4)
-		while (*stack && (*stack)->next && (*stack)->next->next)
-		{
-			if ((*stack)->value > (*stack)->next->value && 
-				(*stack)->value > (*stack)->next->next->value)
-				// do something
-			if ((*stack)->value > (*stack)->next->value)
-				swap(stack);
-			if ((*stack)->value > (*stack)->next->next->value)
-
-			*stack = (*stack)->next;
-		}
-	
-}
-
 int main(int argc, char **argv)
 {
 	t_stack *a;
@@ -94,13 +74,13 @@ int main(int argc, char **argv)
 	}
 	b = NULL;
 	// testing stuff from this point onwards
-	// swap(a);
+	// swap(&a);
 	// push(&a, &b);
 	// push(&a, &b);
 	// push(&a, &b);
 	// rotate(&a);
 	// reverse_rotate(&b);
-	sort_two_three(argc, a, argv);
+	sort_two_three(argc, &a, argv);
 	printf("Stack A:\n");
 	while (a != NULL)
 	{

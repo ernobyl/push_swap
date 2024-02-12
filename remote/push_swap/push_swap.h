@@ -24,16 +24,22 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+/* general */
+int		count_args(char *argv);
+
 /* operations */
-void	swap(t_stack *stack);
+void	swap(t_stack **stack);
 void	push(t_stack **from, t_stack **to);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 
+/* sorting */
+void	sort_two_three(int argc, t_stack **stack, char **argv);
+
 /* error handling */
-int	isdigit_or_sign(int c);
-int	check_valid_args(int argpos, int argc, char **argv);
-int	error_message(void);
+int		isdigit_or_sign(int c);
+int		check_valid_args(int argpos, int argc, char **argv);
+int		error_message(void);
 
 /* stack handling */
 t_stack	*stacknew(int value);
@@ -62,4 +68,11 @@ project plan:
 	- choose sorting algorithm
 	- implement sorting algorithm
 	- test with checker
+
+					3 1 2 - rotate
+	2 3 1 - rotate, 3 1 2 - rotate
+	3 2 1 - rotate, 2 1 3 - swap
+					2 1 3 - swap
+	1 3 2 - reverse rotate, 2 1 3 - swap
+	1 2 3 - sorted
 */
