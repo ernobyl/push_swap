@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+
+t_stack	*stack_last(t_stack *stack)
+{
+	while (stack && stack->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
+t_stack	*stack_second_last(t_stack *stack)
+{
+	while (stack && stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
 void	rotate(t_stack **stack)
 {
 	t_stack	*first_node;
@@ -26,20 +41,22 @@ void	rotate(t_stack **stack)
 		last_node = last_node->next;
 	last_node->next = first_node;
 	first_node->next = NULL;
+	write(1, "ra\n", 3);
 }
 
 void	reverse_rotate(t_stack **stack)
 {
-	t_stack	*first_node;
+	t_stack	*tmp;
 	t_stack	*last_node;
+	t_stack	*second_last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	last_node = *stack;
-	while (last_node->next->next)
-		last_node = last_node->next;
-	first_node = last_node->next;
-	last_node->next = NULL;
-	first_node->next = *stack;
-	*stack = first_node;
+	last_node = stack_last(*stack);
+	second_last = stack_second_last(*stack);
+	tmp = *stack;
+	*stack = last_node;
+	(*stack)->next = tmp;
+	second_last->next = NULL;
+	write(1, "rra\n", 4);
 }

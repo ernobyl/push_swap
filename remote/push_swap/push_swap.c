@@ -50,6 +50,84 @@ char	**args_single_string(char **argv)
 	return (split_result);
 }
 
+int count_stack(t_stack **stack)
+{
+    t_stack *temp;
+    int count = 0;
+
+    temp = *stack;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
+int find_max_value_index(t_stack **stack)
+{
+	t_stack *temp;
+	int max_value;
+	int max_index;
+	int i;
+
+	temp = *stack;
+	max_value = temp->value;
+	max_index = 0;
+	i = 0;
+	while (temp != NULL)
+	{
+		if (temp->value > max_value)
+		{
+			max_value = temp->value;
+			max_index = i;
+		}
+		temp = temp->next;
+		i++;
+	}
+	return max_index;
+}
+
+void	flip(t_stack **stack, int k, int size)
+{
+	if (k <= size / 2)
+	{
+		while (k > 0)
+		{
+			rotate(stack);
+			k--;
+		}
+	}
+	else
+	{
+		while (k < size)
+		{
+			reverse_rotate(stack);
+			k++;
+		}
+	}
+}
+
+void	pancake_sort(t_stack **stack)
+{
+	int	size;
+	int	max_index;
+
+	size = count_stack(stack);
+	while (size > 0)
+	{
+		max_index = find_max_value_index(stack);
+		if (max_index != size)
+		{
+			flip(stack, max_index, size);
+			flip(stack, size, size);
+			size--;
+		}
+		reverse_rotate(stack);
+		size--;
+	}
+}
+
 int main(int argc, char **argv)
 {
 	t_stack *a;
@@ -80,12 +158,14 @@ int main(int argc, char **argv)
 	// push(&a, &b);
 	// rotate(&a);
 	// reverse_rotate(&b);
-	sort_two_three(argc, &a, argv);
+	//sort_two_three(argc, &a, argv);
+	pancake_sort(&a);
+	t_stack	*tmp_a = a;
 	printf("Stack A:\n");
-	while (a != NULL)
+	while (tmp_a != NULL)
 	{
-		printf("%d\n", a->value);
-		a = a->next;
+		printf("%d\n", tmp_a->value);
+		tmp_a = tmp_a->next;
 	}
 	printf("Stack B:\n");
 	while (b != NULL)
