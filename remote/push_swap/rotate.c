@@ -41,7 +41,6 @@ void	rotate(t_stack **stack)
 		last_node = last_node->next;
 	last_node->next = first_node;
 	first_node->next = NULL;
-	write(1, "ra\n", 3);
 }
 
 void	reverse_rotate(t_stack **stack)
@@ -58,5 +57,4 @@ void	reverse_rotate(t_stack **stack)
 	*stack = last_node;
 	(*stack)->next = tmp;
 	second_last->next = NULL;
-	write(1, "rra\n", 4);
 }

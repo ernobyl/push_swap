@@ -32,9 +32,25 @@ void	swap(t_stack **stack);
 void	push(t_stack **from, t_stack **to);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
+void	pa(t_stack **b, t_stack **a);
+void	pb(t_stack **a, t_stack **b);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 
 /* sorting */
+int 	count_stack(t_stack **stack);
+int 	find_max_value_index(t_stack **stack);
+int 	find_min_value_index(t_stack **stack);
+void	move_to_top(t_stack **stack, int index, int size);
 void	sort_two_three(int argc, t_stack **stack, char **argv);
+void	selection_sort(t_stack **a, t_stack **b);
 
 /* error handling */
 int		isdigit_or_sign(int c);
@@ -68,11 +84,4 @@ project plan:
 	- choose sorting algorithm
 	- implement sorting algorithm
 	- test with checker
-
-					3 1 2 - rotate
-	2 3 1 - rotate, 3 1 2 - rotate
-	3 2 1 - rotate, 2 1 3 - swap
-					2 1 3 - swap
-	1 3 2 - reverse rotate, 2 1 3 - swap
-	1 2 3 - sorted
 */

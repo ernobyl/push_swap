@@ -16,7 +16,7 @@ void	sort_two_three(int argc, t_stack **stack, char **argv)
 {
 	if (count_args(argv[1]) == 2 || argc == 3)
 		if ((*stack)->value > (*stack)->next->value)
-			swap(stack);
+			sa(stack);
 	if (count_args(argv[1]) == 3 || argc == 4)
 	{
 		while ((*stack)->value > (*stack)->next->value ||
@@ -25,16 +25,40 @@ void	sort_two_three(int argc, t_stack **stack, char **argv)
 		{
 			if ((*stack)->value < (*stack)->next->value &&
 				(*stack)->value < (*stack)->next->next->value)
-				reverse_rotate(stack);
+				rra(stack);
 			else if ((*stack)->next->value > (*stack)->next->next->value)
-				rotate(stack);
+				ra(stack);
 			else if ((*stack)->value > (*stack)->next->value)
 			{
 				if ((*stack)->value > (*stack)->next->next->value)
-					rotate(stack);
+					ra(stack);
 				else
-					swap(stack);
+					sa(stack);
 			}
+		}
+	}
+}
+
+void selection_sort(t_stack **a, t_stack **b)
+{
+	int min_index;
+	int size;
+
+	size = count_stack(a);
+	if (size > 3)
+	{
+		while (size > 0)
+		{
+			min_index = find_min_value_index(a);
+			move_to_top(a, min_index, size);
+			pb(a, b);
+			size--;
+		}
+		size = count_stack(b);
+		while (size > 0)
+		{
+			pa(b, a);
+			size--;
 		}
 	}
 }
