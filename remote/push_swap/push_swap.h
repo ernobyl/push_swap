@@ -46,10 +46,11 @@ void	rrr(t_stack **a, t_stack **b);
 
 /* sorting */
 int 	count_stack(t_stack **stack);
-int 	find_max_value_index(t_stack **stack);
+t_stack *find_max_value(t_stack **stack);
 int 	find_min_value_index(t_stack **stack);
-void	move_to_top(t_stack **stack, int index, int size);
-void	sort_two_three(int argc, t_stack **stack, char **argv);
+void	move_to_place(t_stack **stack, int index, int size);
+void	sort_two(t_stack **stack);
+void	sort_three(t_stack **stack);
 void	selection_sort(t_stack **a, t_stack **b);
 
 /* error handling */

@@ -23,31 +23,23 @@ int count_stack(t_stack **stack)
 		count++;
 		temp = temp->next;
 	}
-	return count;
+	return (count);
 }
 
-int find_max_value_index(t_stack **stack)
+t_stack	*find_max_value(t_stack **stack)
 {
-	t_stack *temp;
-	int max_value;
-	int max_index;
-	int i;
+	t_stack	*temp;
+	t_stack	*max_node;
 
 	temp = *stack;
-	max_value = temp->value;
-	max_index = 0;
-	i = 0;
+	max_node = temp;
 	while (temp != NULL)
 	{
-		if (temp->value > max_value)
-		{
-			max_value = temp->value;
-			max_index = i;
-		}
+		if (temp->value > max_node->value)
+			max_node = temp;
 		temp = temp->next;
-		i++;
 	}
-	return max_index;
+	return (max_node);
 }
 
 int find_min_value_index(t_stack **stack)
@@ -71,10 +63,10 @@ int find_min_value_index(t_stack **stack)
 		temp = temp->next;
 		i++;
 	}
-	return min_index;
+	return (min_index);
 }
 
-void	move_to_top(t_stack **stack, int index, int size)
+void	move_to_place(t_stack **stack, int index, int size)
 {
 	if (index <= size / 2)
 	{

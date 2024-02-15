@@ -50,6 +50,7 @@ char	**args_single_string(char **argv)
 	return (split_result);
 }
 
+
 int main(int argc, char **argv)
 {
 	t_stack *a;
@@ -80,7 +81,8 @@ int main(int argc, char **argv)
 	// push(&a, &b);
 	// rotate(&a);
 	// reverse_rotate(&b);
-	sort_two_three(argc, &a, argv);
+	sort_two(&a);
+	sort_three(&a);
 	selection_sort(&a, &b);
 	// t_stack	*tmp_a = a;
 	// printf("Stack A:\n");
