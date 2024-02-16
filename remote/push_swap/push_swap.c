@@ -78,21 +78,20 @@ int main(int argc, char **argv)
 	// testing stuff from this point onwards
 	sort_two(&a);
 	sort_three(&a);
-	sort_five(&a, &b);
 	// selection_sort(&a, &b);
-	t_stack	*tmp_a = a;
-	printf("Stack A:\n");
-	while (tmp_a != NULL)
-	{
-		printf("%d\n", tmp_a->value);
-		tmp_a = tmp_a->next;
-	}
-	printf("Stack B:\n");
-	while (b != NULL)
-	{
-		printf("%d\n", b->value);
-		b = b->next;
-	}
+	// t_stack	*tmp_a = a;
+	// printf("Stack A:\n");
+	// while (tmp_a != NULL)
+	// {
+	// 	printf("%d\n", tmp_a->value);
+	// 	tmp_a = tmp_a->next;
+	// }
+	// printf("Stack B:\n");
+	// while (b != NULL)
+	// {
+	// 	printf("%d\n", b->value);
+	// 	b = b->next;
+	// }
 	//testing ends here
 	clear_stack(&a);
 	return (0);

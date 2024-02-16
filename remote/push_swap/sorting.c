@@ -75,6 +75,6 @@ void	sort_stacks(t_stack **a, t_stack **b)
 		pb(a, b);
 	while (size-- > 3 && !if_sorted(*a))
 	{
-		scan_stack(*a, *b);
+		get_operations(*a, *b);
 	}
 }

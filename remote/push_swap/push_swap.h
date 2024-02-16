@@ -14,23 +14,27 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
+# include <limits.h>
 # include <stdlib.h>
 # include <stdio.h> // for now included only for printf, remove at some point
 # include "libft/libft.h"
 
-typedef struct s_direction
+typedef enum	e_direction
 {
-	/* data */
-};	t_direction
+	up,
+	down
+}	t_direction;
 
-typedef struct s_stack
+typedef struct	s_stack
 {
 	int				value;
 	int				index;
 	int				operations;
+	int				switch_cheapest;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	struct s_stack	*target;
+	t_direction		move;
 }	t_stack;
 
 /* general */
@@ -62,6 +66,11 @@ void	move_to_top(t_stack **stack, int index, int size);
 void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 void	selection_sort(t_stack **a, t_stack **b);
+void	current_index(t_stack *stack);
+void	set_target_a(t_stack *a, t_stack *b);
+void	check_operations(t_stack *a, t_stack *b);
+void	set_least_operations(t_stack *stack);
+void	get_operations(t_stack *a, t_stack *b);
 
 /* error handling */
 int		isdigit_or_sign(int c);
