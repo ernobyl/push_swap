@@ -26,6 +26,17 @@ int count_stack(t_stack **stack)
 	return (count);
 }
 
+int	if_sorted(t_stack *stack)
+{
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
 t_stack	*find_max_value(t_stack **stack)
 {
 	t_stack	*temp;
@@ -66,7 +77,7 @@ int find_min_value_index(t_stack **stack)
 	return (min_index);
 }
 
-void	move_to_place(t_stack **stack, int index, int size)
+void	move_to_top(t_stack **stack, int index, int size)
 {
 	if (index <= size / 2)
 	{

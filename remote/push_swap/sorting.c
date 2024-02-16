@@ -51,7 +51,7 @@ void selection_sort(t_stack **a, t_stack **b)
 		while (size > 0)
 		{
 			min_index = find_min_value_index(a);
-			move_to_place(a, min_index, size);
+			move_to_top(a, min_index, size);
 			pb(a, b);
 			size--;
 		}
@@ -61,5 +61,20 @@ void selection_sort(t_stack **a, t_stack **b)
 			pa(b, a);
 			size--;
 		}
+	}
+}
+
+void	sort_stacks(t_stack **a, t_stack **b)
+{
+	int	size;
+
+	size = count_stack(a);
+	if (size-- > 3 && !if_sorted(*a))
+		pb(a, b);
+	if (size-- > 3 && !if_sorted(*a))
+		pb(a, b);
+	while (size-- > 3 && !if_sorted(*a))
+	{
+		scan_stack(*a, *b);
 	}
 }

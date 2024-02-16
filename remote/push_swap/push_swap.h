@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:29:45 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/09 12:24:36 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:26:20 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,19 @@
 # include <stdio.h> // for now included only for printf, remove at some point
 # include "libft/libft.h"
 
+typedef struct s_direction
+{
+	/* data */
+};	t_direction
+
 typedef struct s_stack
 {
 	int				value;
+	int				index;
+	int				operations;
 	struct s_stack	*next;
+	struct s_stack	*prev;
+	struct s_stack	*target;
 }	t_stack;
 
 /* general */
@@ -45,10 +54,11 @@ void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 
 /* sorting */
+int		if_sorted(t_stack *stack);
 int 	count_stack(t_stack **stack);
 t_stack *find_max_value(t_stack **stack);
 int 	find_min_value_index(t_stack **stack);
-void	move_to_place(t_stack **stack, int index, int size);
+void	move_to_top(t_stack **stack, int index, int size);
 void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 void	selection_sort(t_stack **a, t_stack **b);

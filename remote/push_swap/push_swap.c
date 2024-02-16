@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:28:04 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/09 16:27:08 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:30:27 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int main(int argc, char **argv)
 	t_stack	*b;
 	char	**split_result;
 	
+	a = NULL;
+	b = NULL;
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
@@ -73,31 +75,25 @@ int main(int argc, char **argv)
 			return (error_message());
 		a = fill_stack(argc, argv);
 	}
-	b = NULL;
 	// testing stuff from this point onwards
-	// swap(&a);
-	// push(&a, &b);
-	// push(&a, &b);
-	// push(&a, &b);
-	// rotate(&a);
-	// reverse_rotate(&b);
 	sort_two(&a);
 	sort_three(&a);
-	selection_sort(&a, &b);
-	// t_stack	*tmp_a = a;
-	// printf("Stack A:\n");
-	// while (tmp_a != NULL)
-	// {
-	// 	printf("%d\n", tmp_a->value);
-	// 	tmp_a = tmp_a->next;
-	// }
-	// printf("Stack B:\n");
-	// while (b != NULL)
-	// {
-	// 	printf("%d\n", b->value);
-	// 	b = b->next;
-	// }
-	// testing ends here
+	sort_five(&a, &b);
+	// selection_sort(&a, &b);
+	t_stack	*tmp_a = a;
+	printf("Stack A:\n");
+	while (tmp_a != NULL)
+	{
+		printf("%d\n", tmp_a->value);
+		tmp_a = tmp_a->next;
+	}
+	printf("Stack B:\n");
+	while (b != NULL)
+	{
+		printf("%d\n", b->value);
+		b = b->next;
+	}
+	//testing ends here
 	clear_stack(&a);
 	return (0);
 }

@@ -33,21 +33,21 @@ echo -e "${RED}push swap with no parameters (this should print nothing):${NC}"
 # variables used
 total_wc=0 # used to calculate average of operations printed
 	# modify these to run different tests
-	runs=10 # control amount of runs
-	values=20 # control amount of values for each run
-	max_random_value=10000 # control max value
+	runs=25 # control amount of runs
+	values=5 # control amount of values for each run
+	max_random_value=10000000 # control max value
 
-for ((j=1; j<=runs; j++))
+for ((j=1; j<=runs; j++)) # run outer loop for 'runs' times
 do
-    unique_values=()
+    unique_values=() # initialize array for random values
 
-    while [ ${#unique_values[@]} -lt ${values} ]
+    while [ ${#unique_values[@]} -lt ${values} ] # loop runs until 'unique values' matches desired amount of values
     do
-        random_value=$((RANDOM % (max_random_value + 1)))
+        random_value=$((RANDOM % (max_random_value + 1))) # generate random value between 0 and 'max_random_value' and assign it to 'random_value'
 
         # check for duplicates
         if [[ ! " ${unique_values[@]} " =~ " $random_value " ]]; then
-            unique_values+=($random_value)
+            unique_values+=($random_value) # if random value is not part of 'unique_values', it gets added
         fi
     done
 
