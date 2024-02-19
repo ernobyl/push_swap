@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_even_more_operations.c                          :+:      :+:    :+:   */
+/*   sort_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,29 +12,15 @@
 
 #include "push_swap.h"
 
-void	rra(t_stack **a)
+t_stack	*get_cheapest(t_stack *stack)
 {
-	rotate(a);
-	write(1, "rra\n", 4);
-}
-
-void	rrb(t_stack **b)
-{
-	rotate(b);
-	write(1, "rrb\n", 4);
-}
-
-void	rrr(t_stack **a, t_stack **b)
-{
-	rotate(a);
-	rotate(b);
-	write(1, "rrr\n", 4);
-}
-
-void	reverse_to_place(t_stack **a, t_stack **b, t_stack *cheapest)
-{
-	while (*b != cheapest->target && *a != cheapest)
-		rr(a, b);
-	current_index(*a);
-	current_index(*b);
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->switch_cheapest == true)
+			return (stack);
+			stack->next;
+	}
+	return (NULL);
 }

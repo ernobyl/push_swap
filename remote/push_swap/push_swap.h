@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <stdio.h> // for now included only for printf, remove at some point
 # include "libft/libft.h"
 
@@ -30,7 +31,7 @@ typedef struct	s_stack
 	int				value;
 	int				index;
 	int				operations;
-	int				switch_cheapest;
+	bool			switch_cheapest;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	struct s_stack	*target;
@@ -53,24 +54,33 @@ void	ss(t_stack **a, t_stack **b);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
+void	rr_to_place(t_stack **a, t_stack **b, t_stack *cheapest);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
+void	reverse_to_place(t_stack **a, t_stack **b, t_stack *cheapest);
+void    prep_for_push(t_stack **stack, t_stack *top, char stackname);
+void    move_a_to_b(t_stack **a, t_stack **b);
+void    move_b_to_a(t_stack **a, t_stack **b);
+void    min_on_top(t_stack **a);
 
 /* sorting */
-int		if_sorted(t_stack *stack);
+bool	if_sorted(t_stack *stack);
 int 	count_stack(t_stack **stack);
-t_stack *find_max_value(t_stack **stack);
+t_stack *find_max_value(t_stack *stack);
+t_stack *find_min_value(t_stack *stack);
 int 	find_min_value_index(t_stack **stack);
-void	move_to_top(t_stack **stack, int index, int size);
+t_stack	*get_cheapest(t_stack *stack);
 void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
-void	selection_sort(t_stack **a, t_stack **b);
+void	sort_stacks(t_stack **a, t_stack **b);
 void	current_index(t_stack *stack);
 void	set_target_a(t_stack *a, t_stack *b);
+void	set_target_b(t_stack *a, t_stack *b);
 void	check_operations(t_stack *a, t_stack *b);
 void	set_least_operations(t_stack *stack);
-void	get_operations(t_stack *a, t_stack *b);
+void	scan_stack_a(t_stack *a, t_stack *b);
+void	scan_stack_b(t_stack *a, t_stack *b);
 
 /* error handling */
 int		isdigit_or_sign(int c);

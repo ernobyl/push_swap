@@ -20,7 +20,7 @@ void	current_index(t_stack *stack)
 	i = 0;
 	if (!stack)
 		return ;
-	direction = count_stack(stack) / 2;
+	direction = count_stack(&stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
@@ -45,7 +45,8 @@ void	set_target_a(t_stack *a, t_stack *b)
 		current_b = b;
 		while (current_b)
 		{
-			if (current_b->value < a->value && current_b->value > closest_smaller)
+			if (current_b->value < a->value
+				&& current_b->value > closest_smaller)
 			{
 				closest_smaller = current_b->value;
 				target = current_b;
@@ -65,14 +66,14 @@ void	check_operations(t_stack *a, t_stack *b)
 	int size_a;
 	int size_b;
 
-	size_a = count_stack(a);
-	size_b = count_stack(b);
+	size_a = count_stack(&a);
+	size_b = count_stack(&b);
 	while (a)
 	{
 		a->operations = a->index;
 		if (a->move == down)
 			a->operations = size_a - a->index;
-		if (a->move == up)
+		if (a->target->move == up)
 			a->operations = a->operations + a->target->index;
 		else
 			a->operations = a->operations + size_b - a->target->index;
@@ -97,10 +98,10 @@ void	set_least_operations(t_stack *stack)
 		}
 		stack = stack->next;
 	}
-	cheapest->switch_cheapest = 0;
+	cheapest->switch_cheapest = true;
 }
 
-void	get_operations(t_stack *a, t_stack *b)
+void	scan_stack_a(t_stack *a, t_stack *b)
 {
 	current_index(a);
 	current_index(b);

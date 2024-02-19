@@ -26,16 +26,16 @@ echo -e "${RED}Over max int:${NC}"
 ./push_swap 80 2 77 -1 99999999999
 echo -e "${RED}Under min int:${NC}"
 ./push_swap -1 -800000 78 -99999999999 33 100
-echo -e "${RED}push swap with no parameters (this should print nothing):${NC}"
+echo -e "${YELLOW}push swap with no parameters ${RED}(this should print nothing):${NC}"
 ./push_swap
 
 ################ TESTING PUSH_SWAP ################
 # variables used
 total_wc=0 # used to calculate average of operations printed
 	# modify these to run different tests
-	runs=25 # control amount of runs
-	values=5 # control amount of values for each run
-	max_random_value=10000000 # control max value
+	runs=10 # control amount of runs
+	values=10 # control amount of values for each run
+	max_random_value=100000 # control max value
 
 for ((j=1; j<=runs; j++)) # run outer loop for 'runs' times
 do

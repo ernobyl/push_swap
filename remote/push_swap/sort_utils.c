@@ -26,23 +26,25 @@ int count_stack(t_stack **stack)
 	return (count);
 }
 
-int	if_sorted(t_stack *stack)
+bool	if_sorted(t_stack *stack)
 {
+	if (!stack)
+		return (1);
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
-			return (1);
+			return (false);
 		stack = stack->next;
 	}
-	return (0);
+	return (true);
 }
 
-t_stack	*find_max_value(t_stack **stack)
+t_stack	*find_max_value(t_stack *stack)
 {
 	t_stack	*temp;
 	t_stack	*max_node;
 
-	temp = *stack;
+	temp = stack;
 	max_node = temp;
 	while (temp != NULL)
 	{
@@ -51,6 +53,22 @@ t_stack	*find_max_value(t_stack **stack)
 		temp = temp->next;
 	}
 	return (max_node);
+}
+
+t_stack	*find_min_value(t_stack *stack)
+{
+	t_stack	*temp;
+	t_stack	*min_node;
+
+	temp = stack;
+	min_node = temp;
+	while (temp != NULL)
+	{
+		if (temp->value < min_node->value)
+			min_node = temp;
+		temp = temp->next;
+	}
+	return (min_node);
 }
 
 int find_min_value_index(t_stack **stack)
@@ -75,24 +93,4 @@ int find_min_value_index(t_stack **stack)
 		i++;
 	}
 	return (min_index);
-}
-
-void	move_to_top(t_stack **stack, int index, int size)
-{
-	if (index <= size / 2)
-	{
-		while (index > 0)
-		{
-			ra(stack);
-			index--;
-		}
-	}
-	else
-	{
-		while (index < size)
-		{
-			rra(stack);
-			index++;
-		}
-	}
 }

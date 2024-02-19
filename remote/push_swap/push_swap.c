@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 	// testing stuff from this point onwards
 	sort_two(&a);
 	sort_three(&a);
-	// selection_sort(&a, &b);
+	sort_stacks(&a, &b);
 	// t_stack	*tmp_a = a;
 	// printf("Stack A:\n");
 	// while (tmp_a != NULL)
