@@ -9,10 +9,16 @@ SRCS = push_swap.c \
 		do_operations.c \
 		do_more_operations.c \
 		do_even_more_operations.c \
+		advanced_operations.c \
 		error_handling.c \
 		populating_stacks.c \
 		sorting.c \
 		sort_utils.c \
+		sort_utils_2.c \
+		scan_stack.c \
+		scan_stack_b.c \
+
+
 
 NAME = push_swap
 

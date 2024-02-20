@@ -32,10 +32,11 @@ echo -e "${YELLOW}push swap with no parameters ${RED}(this should print nothing)
 ################ TESTING PUSH_SWAP ################
 # variables used
 total_wc=0 # used to calculate average of operations printed
+max_wc=0 # used to update the current maximum wc
 	# modify these to run different tests
 	runs=10 # control amount of runs
-	values=10 # control amount of values for each run
-	max_random_value=100000 # control max value
+	values=5 # control amount of values for each run
+	max_random_value=500000 # control max value
 
 for ((j=1; j<=runs; j++)) # run outer loop for 'runs' times
 do
@@ -54,9 +55,15 @@ do
     echo -e "${YELLOW}Running ./push_swap ${NC}${unique_values[@]}"
     current_wc=$(./push_swap "${unique_values[@]}" 2>&1 | wc -l)
     echo "operations: $current_wc"
+
+    if [ $current_wc -gt $max_wc ]; then
+        max_wc=$current_wc
+    fi
+
     total_wc=$((total_wc + current_wc))
 done
 
 average_wc=$((total_wc / (runs)))
 
 echo -e "${YELLOW}Average amount of operations using ${RED}$values${YELLOW} different values (out of ${RED}$runs${YELLOW} runs): ${GREEN}$average_wc${NC}"
+echo -e "${YELLOW}Maximum amount of operations observed: ${GREEN}$max_wc${NC}"

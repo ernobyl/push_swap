@@ -20,7 +20,7 @@ t_stack	*get_cheapest(t_stack *stack)
 	{
 		if (stack->switch_cheapest == true)
 			return (stack);
-			stack->next;
+		stack = stack->next;
 	}
 	return (NULL);
 }
