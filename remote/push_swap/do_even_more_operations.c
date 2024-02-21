@@ -14,27 +14,27 @@
 
 void	rra(t_stack **a)
 {
-	rotate(a);
+	reverse_rotate(a);
 	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **b)
 {
-	rotate(b);
+	reverse_rotate(b);
 	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
-	rotate(a);
-	rotate(b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	write(1, "rrr\n", 4);
 }
 
 void	reverse_to_place(t_stack **a, t_stack **b, t_stack *cheapest)
 {
 	while (*b != cheapest->target && *a != cheapest)
-		rr(a, b);
+		rrr(a, b);
 	current_index(*a);
 	current_index(*b);
 }

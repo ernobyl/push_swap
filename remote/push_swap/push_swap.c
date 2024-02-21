@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:28:04 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/20 13:13:49 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:45:15 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,20 @@ int main(int argc, char **argv)
 	sort_two(&a);
 	sort_three(&a);
 	sort_stacks(&a, &b);
-	// t_stack	*tmp_a = a;
-	// printf("Stack A:\n");
-	// while (tmp_a != NULL)
-	// {
-	// 	printf("%d\n", tmp_a->value);
-	// 	tmp_a = tmp_a->next;
-	// }
-	// printf("Stack B:\n");
-	// while (b != NULL)
-	// {
-	// 	printf("%d\n", b->value);
-	// 	b = b->next;
-	// }
-	//testing ends here
+	t_stack	*tmp_a = a;
+	printf("Stack A:\n");
+	while (tmp_a != NULL)
+	{
+		printf("%d\n", tmp_a->value);
+		tmp_a = tmp_a->next;
+	}
+	printf("Stack B:\n");
+	while (b != NULL)
+	{
+		printf("%d\n", b->value);
+		b = b->next;
+	}
+	// testing ends here
 	clear_stack(&a);
 	return (0);
 }

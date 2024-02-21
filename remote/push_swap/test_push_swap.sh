@@ -34,8 +34,8 @@ echo -e "${YELLOW}push swap with no parameters ${RED}(this should print nothing)
 total_wc=0 # used to calculate average of operations printed
 max_wc=0 # used to update the current maximum wc
 	# modify these to run different tests
-	runs=10 # control amount of runs
-	values=5 # control amount of values for each run
+	runs=20 # control amount of runs
+	values=30 # control amount of values for each run
 	max_random_value=500000 # control max value
 
 for ((j=1; j<=runs; j++)) # run outer loop for 'runs' times

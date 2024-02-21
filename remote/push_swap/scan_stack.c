@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:10:32 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/16 13:22:31 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:58:36 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	current_index(t_stack *stack)
 		else
 			stack->move = down;
 		stack = stack->next;
-		i++;
+		++i;
 	}
 }
 
