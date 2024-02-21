@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:45:21 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/09 10:47:17 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:19:31 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_valid_args(int argpos, int argc, char **argv)
 			k = i + 1;
 			while (argv[k])
 			{
-				if (ft_strcmp(argv[i], argv[k]) == 0)
+				if (ft_atoi(argv[i]) == ft_atoi(argv[k]))
 					return (-1);
 				k++;
 			}
@@ -42,7 +42,7 @@ int	check_valid_args(int argpos, int argc, char **argv)
 		n = 0;
 		while (argv[i][n])
 		{
-			if (!isdigit_or_sign(argv[i][n]))
+			if (!isdigit_or_sign(argv[i][0]) || !ft_isdigit(argv[i][n]))
 				return (-1);
 			n++;
 		}
