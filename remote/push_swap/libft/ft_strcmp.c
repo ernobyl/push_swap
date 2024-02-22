@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:08:28 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/01 16:15:12 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:32:43 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int	ft_strcmp(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-    return (0);
+	return (0);
 }

@@ -6,12 +6,11 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:47:32 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/05 15:25:53 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:38:05 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 t_stack	*stack_last(t_stack *stack)
 {
@@ -31,7 +30,7 @@ void	rotate(t_stack **stack)
 {
 	t_stack	*first_node;
 	t_stack	*last_node;
-	
+
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	first_node = *stack;

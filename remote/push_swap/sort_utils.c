@@ -12,11 +12,12 @@
 
 #include "push_swap.h"
 
-int count_stack(t_stack **stack)
+int	count_stack(t_stack **stack)
 {
-	t_stack *temp;
-	int count = 0;
+	t_stack	*temp;
+	int		count;
 
+	count = 0;
 	temp = *stack;
 	while (temp != NULL)
 	{
@@ -71,12 +72,12 @@ t_stack	*find_min_value(t_stack *stack)
 	return (min_node);
 }
 
-int find_min_value_index(t_stack **stack)
+int	find_min_value_index(t_stack **stack)
 {
-	t_stack *temp;
-	int min_value;
-	int min_index;
-	int i;
+	t_stack	*temp;
+	int		min_value;
+	int		min_index;
+	int		i;
 
 	temp = *stack;
 	min_value = temp->value;

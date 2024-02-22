@@ -14,8 +14,8 @@
 
 void	set_target_b(t_stack *a, t_stack *b)
 {
-	t_stack *target;
-	t_stack *current_a;
+	t_stack	*target;
+	t_stack	*current_a;
 	long	closest_bigger;
 
 	while (b)
@@ -38,7 +38,6 @@ void	set_target_b(t_stack *a, t_stack *b)
 			b->target = target;
 		b = b->next;
 	}
-
 }
 
 void	scan_stack_b(t_stack *a, t_stack *b)

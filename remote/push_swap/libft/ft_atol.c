@@ -12,10 +12,10 @@
 
 long	ft_atol(const char *str)
 {
-	long	    i;
+	long	i;
 	long	result;
-	int	    negative;
-	int	    sign;
+	int		negative;
+	int		sign;
 
 	i = 0;
 	result = 0;

@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:10:32 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/21 10:58:36 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:39:46 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	current_index(t_stack *stack)
 {
-	int i;
-	int direction;
+	int	i;
+	int	direction;
 
 	i = 0;
 	if (!stack)
@@ -35,8 +35,8 @@ void	current_index(t_stack *stack)
 
 void	set_target_a(t_stack *a, t_stack *b)
 {
-	t_stack *target;
-	t_stack *current_b;
+	t_stack	*target;
+	t_stack	*current_b;
 	long	closest_smaller;
 
 	while (a)
@@ -63,8 +63,8 @@ void	set_target_a(t_stack *a, t_stack *b)
 
 void	check_operations(t_stack *a, t_stack *b)
 {
-	int size_a;
-	int size_b;
+	int	size_a;
+	int	size_b;
 
 	size_a = count_stack(&a);
 	size_b = count_stack(&b);
@@ -84,7 +84,7 @@ void	check_operations(t_stack *a, t_stack *b)
 void	set_least_operations(t_stack *stack)
 {
 	long	least_operations;
-	t_stack *cheapest;
+	t_stack	*cheapest;
 
 	if (!stack)
 		return ;
