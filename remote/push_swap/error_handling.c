@@ -6,7 +6,7 @@
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:45:21 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/21 15:19:31 by emichels         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:40:00 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 int	isdigit_or_sign(int c)
 {
 	if ((c >= 48 && c <= 57) || c == 43 || c == 45)
+		return (1);
+	else
+		return (0);
+}
+
+int	is_sign(int c)
+{
+	if (c == 43 || c == 45)
 		return (1);
 	else
 		return (0);
@@ -40,9 +48,12 @@ int	check_valid_args(int argpos, int argc, char **argv)
 			}
 		}
 		n = 0;
+		if (!isdigit_or_sign(argv[i][0]) || (is_sign(argv[i][0]) && !ft_isdigit(argv[i][1])))
+			return (-1);
+		n++;
 		while (argv[i][n])
 		{
-			if (!isdigit_or_sign(argv[i][0]) || !ft_isdigit(argv[i][n]))
+			if (!ft_isdigit(argv[i][n]))
 				return (-1);
 			n++;
 		}

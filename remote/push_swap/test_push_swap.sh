@@ -34,9 +34,9 @@ echo -e "${YELLOW}push swap with no parameters ${RED}(this should print nothing)
 total_wc=0 # used to calculate average of operations printed
 max_wc=0 # used to update the current maximum wc
 	# modify these to run different tests
-	runs=20 # control amount of runs
-	values=30 # control amount of values for each run
-	max_random_value=500000 # control max value
+	runs=10 # control amount of runs
+	values=500 # control amount of values for each run
+	max_random_value=501 # control max value
 
 for ((j=1; j<=runs; j++)) # run outer loop for 'runs' times
 do
@@ -44,7 +44,7 @@ do
 
     while [ ${#unique_values[@]} -lt ${values} ] # loop runs until 'unique values' matches desired amount of values
     do
-        random_value=$((RANDOM % (max_random_value + 1))) # generate random value between 0 and 'max_random_value' and assign it to 'random_value'
+        random_value=$((RANDOM % (max_random_value + 1) - 250)) # generate random value between 0 and 'max_random_value' and assign it to 'random_value'
 
         # check for duplicates
         if [[ ! " ${unique_values[@]} " =~ " $random_value " ]]; then
