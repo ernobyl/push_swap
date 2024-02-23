@@ -3,32 +3,33 @@ CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -Llibft -lft
 
 SRCS = push_swap.c \
-		swap.c \
-		push.c \
-		rotate.c \
-		do_operations.c \
-		do_more_operations.c \
-		do_even_more_operations.c \
-		advanced_operations.c \
 		error_handling.c \
-		populating_stacks.c \
 		sorting.c \
-		sort_utils.c \
-		sort_utils_2.c \
-		scan_stack.c \
-		scan_stack_b.c \
+		operations/swap.c \
+		operations/push.c \
+		operations/rotate.c \
+		operations/do_operations.c \
+		operations/do_more_operations.c \
+		operations/do_even_more_operations.c \
+		operations/advanced_operations.c \
+		utilities/populating_stacks.c \
+		utilities/sort_utils.c \
+		utilities/sort_utils_2.c \
+		utilities/scan_stack.c \
+		utilities/scan_stack_b.c \
 
-
+OBJS = ${SRCS:.c=.o}
 
 NAME = push_swap
 
-${NAME}: ${SRCS}
+${NAME}: ${OBJS}
 	make -C libft
-	${CC} ${CFLAGS} ${SRCS} ${LDFLAGS} -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} ${LDFLAGS} -o ${NAME}
 
 all: ${NAME}
 
 clean:
+	rm -f ${OBJS}
 	make clean -C libft
 
 fclean: clean

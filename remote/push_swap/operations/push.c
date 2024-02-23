@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 12:40:09 by emichels          #+#    #+#             */
-/*   Updated: 2024/02/22 14:08:20 by emichels         ###   ########.fr       */
+/*   Created: 2024/02/05 12:40:13 by emichels          #+#    #+#             */
+/*   Updated: 2024/02/22 11:36:41 by emichels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	swap(t_stack **stack)
+void	push(t_stack **from, t_stack **to)
 {
-	int	tmp;
+	t_stack	*tmp;
 
-	if (!stack || !(*stack) || !(*stack)->next)
+	if (!from || !*from)
 		return ;
-	tmp = (*stack)->value;
-	(*stack)->value = (*stack)->next->value;
-	(*stack)->next->value = tmp;
+	tmp = *from;
+	*from = (*from)->next;
+	tmp->next = *to;
+	*to = tmp;
 }

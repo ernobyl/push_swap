@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_more_operations.c                               :+:      :+:    :+:   */
+/*   do_even_more_operations.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emichels <emichels@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,31 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	ra(t_stack **a)
+void	rra(t_stack **a)
 {
-	rotate(a);
-	write(1, "ra\n", 3);
+	reverse_rotate(a);
+	write(1, "rra\n", 4);
 }
 
-void	rb(t_stack **b)
+void	rrb(t_stack **b)
 {
-	rotate(b);
-	write(1, "rb\n", 3);
+	reverse_rotate(b);
+	write(1, "rrb\n", 4);
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	rotate(a);
-	rotate(b);
-	write(1, "rr\n", 3);
+	reverse_rotate(a);
+	reverse_rotate(b);
+	write(1, "rrr\n", 4);
 }
 
-void	rr_to_place(t_stack **a, t_stack **b, t_stack *cheapest)
+void	reverse_to_place(t_stack **a, t_stack **b, t_stack *cheapest)
 {
 	while (*b != cheapest->target && *a != cheapest)
-		rr(a, b);
+		rrr(a, b);
 	current_index(*a);
 	current_index(*b);
 }
