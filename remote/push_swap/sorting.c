@@ -62,7 +62,7 @@ void	sort_stacks(t_stack **a, t_stack **b)
 			scan_stack_b(*a, *b);
 			move_b_to_a(a, b);
 		}
-		current_index(*a);
+		get_index_and_direction(*a);
 		min_on_top(a);
 	}
 }

@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	current_index(t_stack *stack)
+void	get_index_and_direction(t_stack *stack)
 {
 	int	i;
 	int	direction;
@@ -103,8 +103,8 @@ void	set_least_operations(t_stack *stack)
 
 void	scan_stack_a(t_stack *a, t_stack *b)
 {
-	current_index(a);
-	current_index(b);
+	get_index_and_direction(a);
+	get_index_and_direction(b);
 	set_target_a(a, b);
 	check_operations(a, b);
 	set_least_operations(a);

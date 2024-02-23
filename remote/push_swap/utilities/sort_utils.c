@@ -72,26 +72,15 @@ t_stack	*find_min_value(t_stack *stack)
 	return (min_node);
 }
 
-int	find_min_value_index(t_stack **stack)
+t_stack	*get_cheapest(t_stack *stack)
 {
-	t_stack	*temp;
-	int		min_value;
-	int		min_index;
-	int		i;
-
-	temp = *stack;
-	min_value = temp->value;
-	min_index = 0;
-	i = 0;
-	while (temp != NULL)
+	if (!stack)
+		return (NULL);
+	while (stack)
 	{
-		if (temp->value < min_value)
-		{
-			min_value = temp->value;
-			min_index = i;
-		}
-		temp = temp->next;
-		i++;
+		if (stack->switch_cheapest == true)
+			return (stack);
+		stack = stack->next;
 	}
-	return (min_index);
+	return (NULL);
 }

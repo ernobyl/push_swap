@@ -35,6 +35,6 @@ void	reverse_to_place(t_stack **a, t_stack **b, t_stack *cheapest)
 {
 	while (*b != cheapest->target && *a != cheapest)
 		rrr(a, b);
-	current_index(*a);
-	current_index(*b);
+	get_index_and_direction(*a);
+	get_index_and_direction(*b);
 }

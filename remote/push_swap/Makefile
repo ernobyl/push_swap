@@ -14,7 +14,6 @@ SRCS = push_swap.c \
 		operations/advanced_operations.c \
 		utilities/populating_stacks.c \
 		utilities/sort_utils.c \
-		utilities/sort_utils_2.c \
 		utilities/scan_stack.c \
 		utilities/scan_stack_b.c \
 

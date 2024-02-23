@@ -42,7 +42,7 @@ void	set_target_b(t_stack *a, t_stack *b)
 
 void	scan_stack_b(t_stack *a, t_stack *b)
 {
-	current_index(a);
-	current_index(b);
+	get_index_and_direction(a);
+	get_index_and_direction(b);
 	set_target_b(a, b);
 }
