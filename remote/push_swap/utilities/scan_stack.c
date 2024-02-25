@@ -61,7 +61,7 @@ void	set_target_a(t_stack *a, t_stack *b)
 	}
 }
 
-void	check_operations(t_stack *a, t_stack *b)
+void	set_move_count(t_stack *a, t_stack *b)
 {
 	int	size_a;
 	int	size_b;
@@ -70,35 +70,35 @@ void	check_operations(t_stack *a, t_stack *b)
 	size_b = count_stack(&b);
 	while (a)
 	{
-		a->operations = a->index;
+		a->move_count = a->index;
 		if (a->move == down)
-			a->operations = size_a - a->index;
+			a->move_count = size_a - a->index;
 		if (a->target->move == up)
-			a->operations = a->operations + a->target->index;
+			a->move_count = a->move_count + a->target->index;
 		else
-			a->operations = a->operations + size_b - a->target->index;
+			a->move_count = a->move_count + size_b - a->target->index;
 		a = a->next;
 	}
 }
 
-void	set_least_operations(t_stack *stack)
+void	set_least_moves(t_stack *stack)
 {
-	long	least_operations;
+	long	min_move_count;
 	t_stack	*cheapest;
 
 	if (!stack)
 		return ;
-	least_operations = LONG_MAX;
+	min_move_count = LONG_MAX;
 	while (stack)
 	{
-		if (stack->operations < least_operations)
+		if (stack->move_count < min_move_count)
 		{
-			least_operations = stack->operations;
+			min_move_count = stack->move_count;
 			cheapest = stack;
 		}
 		stack = stack->next;
 	}
-	cheapest->switch_cheapest = true;
+	cheapest->least_moves = true;
 }
 
 void	scan_stack_a(t_stack *a, t_stack *b)
@@ -106,6 +106,6 @@ void	scan_stack_a(t_stack *a, t_stack *b)
 	get_index_and_direction(a);
 	get_index_and_direction(b);
 	set_target_a(a, b);
-	check_operations(a, b);
-	set_least_operations(a);
+	set_move_count(a, b);
+	set_least_moves(a);
 }

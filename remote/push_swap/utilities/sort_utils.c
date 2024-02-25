@@ -78,7 +78,7 @@ t_stack	*get_cheapest(t_stack *stack)
 		return (NULL);
 	while (stack)
 	{
-		if (stack->switch_cheapest == true)
+		if (stack->least_moves == true)
 			return (stack);
 		stack = stack->next;
 	}

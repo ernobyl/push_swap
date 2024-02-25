@@ -17,7 +17,6 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include <stdio.h> // for now included only for printf, remove at some point
 # include "libft/libft.h"
 
 typedef enum e_direction
@@ -30,8 +29,8 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
-	int				operations;
-	bool			switch_cheapest;
+	int				move_count;
+	bool			least_moves;
 	struct s_stack	*next;
 	struct s_stack	*target;
 	t_direction		move;
@@ -72,8 +71,8 @@ void	sort_stacks(t_stack **a, t_stack **b);
 void	get_index_and_direction(t_stack *stack);
 void	set_target_a(t_stack *a, t_stack *b);
 void	set_target_b(t_stack *a, t_stack *b);
-void	check_operations(t_stack *a, t_stack *b);
-void	set_least_operations(t_stack *stack);
+void	set_move_count(t_stack *a, t_stack *b);
+void	set_least_moves(t_stack *stack);
 void	scan_stack_a(t_stack *a, t_stack *b);
 void	scan_stack_b(t_stack *a, t_stack *b);
 
