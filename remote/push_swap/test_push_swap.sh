@@ -6,28 +6,34 @@ RED='\033[0;31m'
 YELLOW='\033[0;33m'
 NC='\033[0m'
 
+if [ "$1" == "mem" ]; then
+    RUN="valgrind --leak-check=full --show-leak-kinds=all ./push_swap"
+else
+    RUN="./push_swap"
+fi
+
 # test error cases
 echo -e "${YELLOW}Testing error cases, all of these should print 'Error' on standard error${NC}"
 echo -e "${RED}Only one empty string:${NC}"
-./push_swap ""
+$RUN ""
 echo -e "${RED}Mixed numbers and letters:${NC}"
-./push_swap 1 9 5 a 2 b 93
+$RUN 1 9 5 a 2 b 93
 echo -e "${RED}Mixed numbers and letters as a single string:${NC}"
-./push_swap "abc 9 5 a 2 b 93"
+$RUN "abc 9 5 a 2 b 93"
 echo -e "${RED}Numbers with an empty string at the end:${NC}"
-./push_swap 888 39 0 2 ""
+$RUN 888 39 0 2 ""
 echo -e "${RED}Numbers with a space (as a string) at the end:${NC}"
-./push_swap 1 3 2 " "
+$RUN 1 3 2 " "
 echo -e "${RED}Arguments contain duplicates:${NC}"
-./push_swap 88 1000 7 13 99 4 2 7 1
+$RUN 88 1000 7 13 99 4 2 7 1
 echo -e "${RED}Arguments contain duplicates as a single string:${NC}"
-./push_swap "88 1000 7 13 99 4 2 7 1"
+$RUN "88 1000 7 13 99 4 2 7 1"
 echo -e "${RED}Over max int:${NC}"
-./push_swap 80 2 77 -1 99999999999
+$RUN 80 2 77 -1 99999999999
 echo -e "${RED}Under min int:${NC}"
-./push_swap -1 -800000 78 -99999999999 33 100
+$RUN -1 -800000 78 -99999999999 33 100
 echo -e "${YELLOW}push swap with no parameters ${RED}(this should print nothing):${NC}"
-./push_swap
+$RUN
 
 ################ TESTING PUSH_SWAP ################
 # variables used
@@ -52,8 +58,8 @@ do
         fi
     done
 
-    echo -e "${YELLOW}Running ./push_swap ${NC}${unique_values[@]}"
-    current_wc=$(./push_swap "${unique_values[@]}" 2>&1 | wc -l)
+    echo -e "${YELLOW}Running $RUN ${NC}${unique_values[@]}"
+    current_wc=$($RUN "${unique_values[@]}" 2>&1 | wc -l)
     echo "operations: $current_wc"
 
     if [ $current_wc -gt $max_wc ]; then
